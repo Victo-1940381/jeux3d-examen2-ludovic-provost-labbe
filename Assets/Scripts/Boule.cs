@@ -36,6 +36,8 @@ public class Boule : MonoBehaviour
     /// Obtient la vélocité actuelle de la boule.
     /// </summary>
     public Vector3 Velocite => rigidbody.linearVelocity;
+    [SerializeField]
+    private InformationInterface info;
 
     private void Start()
     {
@@ -90,7 +92,14 @@ public class Boule : MonoBehaviour
     {
         Diriger();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Piece"))
+        {
+            info.AjouterPiece();
+            Destroy(other.gameObject);
+        }
+    }
     private void CommencerDirection(InputAction.CallbackContext contexte)
     {
         forceAppliquee += contexte.ReadValue<float>() * forceDeplacement * transform.right;

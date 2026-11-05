@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -16,13 +17,15 @@ public class InformationInterface : MonoBehaviour
 
     [SerializeField, Tooltip("Référence au texte affichant la texteVitesse.")]
     TextMeshProUGUI texteVitesse;
+    [SerializeField, Tooltip("Référence au texte affichant le nombre de pieces.")]
+    private TextMeshProUGUI textePieces;
 
     [SerializeField, Tooltip("Référence au gestionnaire de surfaces.")]
     private GestionnaireSurface gestionnaireSurface;
 
     [SerializeField, Tooltip("Référence à la boule.")]
     private Boule boule;
-
+    private int NBPiece;
     // / Temps écoulé depuis le début du jeu
     private float tempsEcoule;
 
@@ -54,6 +57,11 @@ public class InformationInterface : MonoBehaviour
         ControleurJeu.Instance.Controles.actions.FindAction("Commencer").performed -= CommencerJeu;
         tempsEcoule = 0f;
         StartCoroutine(CompterTemps());
+    }
+    public void AjouterPiece()
+    {
+        NBPiece = Int32.Parse(textePieces.text);
+        textePieces.text = (NBPiece + 1).ToString();
     }
 
     /// <summary>
