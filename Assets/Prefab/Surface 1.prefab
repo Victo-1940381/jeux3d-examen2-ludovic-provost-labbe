@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfa636e42c38e048b47ba80ba512c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Surface
+  Inclinaison: {fileID: 2913210174989185016}
   positionGeneration:
   - {x: 0, y: 0.5, z: 0.5}
   - {x: 0, y: 0.5, z: -0.5}

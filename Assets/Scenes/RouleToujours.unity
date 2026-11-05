@@ -1928,6 +1928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControleurJeu
   <Controles>k__BackingField: {fileID: 1667001104}
+  <information>k__BackingField: {fileID: 853917931}
 --- !u!4 &941334743
 Transform:
   m_ObjectHideFlags: 0
@@ -3480,7 +3481,7 @@ MonoBehaviour:
   - <Prefab>k__BackingField: {fileID: 95385475}
     <Probabilite>k__BackingField: 0.2
   - <Prefab>k__BackingField: {fileID: 4466391672286807580, guid: f913c75544970c242aa632976a1816fb, type: 3}
-    <Probabilite>k__BackingField: 0.503
+    <Probabilite>k__BackingField: 0.93
 --- !u!4 &2083738420
 Transform:
   m_ObjectHideFlags: 0

@@ -35,6 +35,16 @@
                     "interactions": "",
                     "initialStateCheck": true,
                     "priority": 0
+                },
+                {
+                    "name": "ArreterInclinaison",
+                    "type": "Button",
+                    "id": "8b420e3e-dc36-41dd-b039-760d0642f686",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -103,6 +113,17 @@
                     "action": "Diriger",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "90bca0a3-3eac-4f08-9933-0a34c71e84a1",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "ArreterInclinaison",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

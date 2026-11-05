@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class InformationInterface : MonoBehaviour
 {
+    public event Action<InformationInterface> infoInterface;
     [SerializeField, Tooltip("Référence au texte affichant le nombre de surfaces parcourues.")]
     TextMeshProUGUI texteNombreSurfacesParcourues;
 
@@ -33,6 +34,7 @@ public class InformationInterface : MonoBehaviour
     {
         tempsEcoule = 0f;
         ControleurJeu.Instance.Controles.actions.FindAction("Commencer").performed += CommencerJeu;
+        ControleurJeu.Instance.Controles.actions.FindAction("ArreterInclinaison").performed += CommencerAchat;
     }
 
     private void OnDestroy()
@@ -58,12 +60,27 @@ public class InformationInterface : MonoBehaviour
         tempsEcoule = 0f;
         StartCoroutine(CompterTemps());
     }
+    private void CommencerAchat(InputAction.CallbackContext contexte)
+    {
+        if(GetNbPiece() >= 5)
+        {
+            AcheterArretInclinasion();
+        }
+    }
     public void AjouterPiece()
     {
         NBPiece = Int32.Parse(textePieces.text);
         textePieces.text = (NBPiece + 1).ToString();
     }
-
+    public int GetNbPiece()
+    {
+        return Int32.Parse(textePieces.text);
+    }
+    public void AcheterArretInclinasion()
+    {
+        infoInterface?.Invoke(this);
+        textePieces.text = (Int32.Parse(textePieces.text) - 5).ToString();
+    }
     /// <summary>
     /// Compteur de temps qui s'incrémente chaque frame tant que le jeu est en cours.
     /// </summary>

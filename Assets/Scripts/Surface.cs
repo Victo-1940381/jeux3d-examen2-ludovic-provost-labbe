@@ -1,8 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(DetecteurBoule))]
 public class Surface : MonoBehaviour
 {
+    [SerializeField, Tooltip("animator de l'inclinaison des plateforme")]
+    private Animator Inclinaison;
+
     /// <summary>
     /// Référence au détecteur de boule attaché à cette surface.
     /// </summary>
@@ -14,8 +18,27 @@ public class Surface : MonoBehaviour
     private void Awake()
     {
         Detecteur = GetComponent<DetecteurBoule>();
-    }
 
+    }
+    private void Start()
+    {
+        Inclinaison.SetBool("arretInclinaison", false);
+        ControleurJeu.Instance.information.infoInterface += ArreterInclinaison;
+        
+    }
+    private void ArreterInclinaison(InformationInterface info)
+    {
+        
+            Inclinaison.SetBool("arretInclinaison", true);
+            StartCoroutine(AttentePlat());
+        
+    }
+    private void RepartirInclinaison()
+    {
+        
+            Inclinaison.SetBool("arretInclinaison", false);
+            
+    }
     /// <summary>
     /// Ajoute un objet à la surface à une position aléatoire parmi les positions de génération définies.
     /// </summary>
@@ -42,5 +65,10 @@ public class Surface : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(transform.position + position, 0.2f);
         }
+    }
+    private IEnumerator AttentePlat()
+    {
+        yield return new WaitForSeconds(5f);
+        RepartirInclinaison();
     }
 }

@@ -13,6 +13,8 @@ public class ControleurJeu : MonoBehaviour
 
     [field:SerializeField, Tooltip("Référence aux contrôles du joueur.")]
     public PlayerInput Controles { get; private set; }
+    [field: SerializeField, Tooltip("Référence aux information de jeu")]
+    public InformationInterface information { get; private set; }
 
     private void Awake()
     {
